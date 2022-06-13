@@ -1,11 +1,13 @@
+/*
+ * Show preferences stats. No prefs change, only display.
+ */
+
 const _MIN_PREF_ = -1;
 const _MAX_PREF_ = 3;
 const _CONFLICT_ = -100;
 const _SELECTOR_ = "input.revpref";
 const _MIN_POS_PREFS_ = 30;
 
-
-//Stats
 function stats(){
     var inputPrefs = document.querySelectorAll(_SELECTOR_);
     console.log("[INFO] Found " + inputPrefs.length + " papers");
