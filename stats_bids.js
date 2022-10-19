@@ -64,20 +64,23 @@ function stats(){
     console.log("[INFO] Preferences == 0 = " + zeros.length);
 
     // Group by
-    var gr = Array.from(data).reduce((acc, row) => {
-        v = parseInt(row[1].value) || 0
-        if (!acc[v]) {
-            acc[v] = [];
-        }
-        acc[v].push(row[0]);
-    
-        return acc;
-    }, {});
+    if (minPref < _MIN_PREF_ || maxPref > _MAX_PREF_) {
+        var gr = Array.from(data).reduce((acc, row) => {
+            v = parseInt(row[1].value) || 0
+            if (!acc[v]) {
+                acc[v] = [];
+            }
+            acc[v].push(row[0]);
+        
+            return acc;
+        }, {});
 
-    console.log("[INFO] Current bids")
-    Object.entries(gr).forEach(e => {
-        console.log("   Key: ", e[0], " : ", e[1].join(", "))}
-    );
+        console.log("[INFO] Current bids")
+        Object.entries(gr).forEach(e => {
+            console.log("   Key: ", e[0], " : ", e[1].join(", "))}
+        );
+    }
+
 }
 
 stats();

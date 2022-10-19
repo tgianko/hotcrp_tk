@@ -9,21 +9,26 @@
 const _MIN_PREF_ = -1;
 const _MAX_PREF_ = 3;
 const _CONFLICT_ = -100;
-const _SELECTOR_ = "input.revpref";
 const _MAX_WAIT_TIME_ = 5000;
 
-const _DRY_RUN_ = false;
+const _INPUT_SELECTOR_ = "input.revpref";
+const _ROW_SELECTOR_   = "tr.pl";
+
+const _DRY_RUN_ = true;
 
 function fire(n){
     if (!_DRY_RUN_) {
-        console.log("BANG");
-        // setTimeout(() => {
-        //     n.dispatchEvent(new Event('change', { 'bubbles': true }));
-        // }, Math.random() * _MAX_WAIT_TIME_)
+        setTimeout(() => {
+            n.dispatchEvent(new Event('change', { 'bubbles': true }));
+        }, Math.random() * _MAX_WAIT_TIME_)
     }
 }
 
 function remap(){
+    var data = Array.from(document.querySelectorAll(_ROW_SELECTOR_)).map(row =>[row.dataset['pid'], row.querySelector(_INPUT_SELECTOR_)]);
+    
+    var inputPrefs = Array.from(data).map(row => row[1]);
+
     var inputPrefs = document.querySelectorAll(_SELECTOR_);
     console.log("[INFO] Found " + inputPrefs.length + " papers");
     
