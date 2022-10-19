@@ -12,10 +12,15 @@ const _CONFLICT_ = -100;
 const _SELECTOR_ = "input.revpref";
 const _MAX_WAIT_TIME_ = 5000;
 
+const _DRY_RUN_ = false;
+
 function fire(n){
-    setTimeout(() => {
-        n.dispatchEvent(new Event('change', { 'bubbles': true }));
-    }, Math.random() * _MAX_WAIT_TIME_)
+    if (!_DRY_RUN_) {
+        console.log("BANG");
+        // setTimeout(() => {
+        //     n.dispatchEvent(new Event('change', { 'bubbles': true }));
+        // }, Math.random() * _MAX_WAIT_TIME_)
+    }
 }
 
 function remap(){
